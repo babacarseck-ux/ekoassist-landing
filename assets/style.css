@@ -70,6 +70,12 @@ nav {
   flex-shrink: 0;
 }
 
+.nav-logotype {
+  height: 32px;
+  width: auto;
+  flex-shrink: 0;
+}
+
 .nav-cta {
   background: var(--teal);
   color: var(--white);
@@ -522,10 +528,9 @@ footer {
   gap: 16px;
 }
 
-.footer-logo {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--white);
+.footer-logo img {
+  height: 32px;
+  width: auto;
 }
 
 .footer-links {
