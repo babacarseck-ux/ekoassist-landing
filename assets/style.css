@@ -344,6 +344,10 @@ nav {
   margin: 48px auto 0;
 }
 
+.pricing-single {
+  max-width: 420px;
+}
+
 .price-card {
   border-radius: var(--radius);
   padding: 36px 32px;

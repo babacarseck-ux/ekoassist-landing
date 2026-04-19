@@ -129,6 +129,24 @@
 
     .fallback a:hover { text-decoration: underline; }
 
+    .value-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+
+    .value-item {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
     .trust {
       margin-top: 16px;
       font-size: 12px;
@@ -140,23 +158,29 @@
 
   <div class="logo">Eko<span>Assist</span></div>
 
-  <h1>Bokföring som passar just dig</h1>
-  <p class="sub">Välj det som liknar din vardag — så visar vi rätt lösning.</p>
+  <h1>Fota kvittot. Skicka fakturan. Klart.</h1>
+  <p class="sub">Välj det som liknar din vardag — så visar vi rätt lösning för dig.</p>
 
   <div class="cards">
     <a class="card" href="/konsult">
       <span class="card-icon">💼</span>
       <h2>Konsult</h2>
-      <p>För dig som fakturerar kunder och vill ha koll på F-skatt, moms och kvitton.</p>
-      <span class="card-arrow">Visa lösningen →</span>
+      <p>Skapa fakturor, bokför kvitton och vet alltid vad du ska sätta undan för F-skatten.</p>
+      <span class="card-arrow">Jag är konsult →</span>
     </a>
 
     <a class="card" href="/frisor">
       <span class="card-icon">✂️</span>
       <h2>Frisör / Barberare</h2>
-      <p>För dig som gör dagsavslut och vill bokföra snabbt utan pappershögar.</p>
-      <span class="card-arrow">Visa lösningen →</span>
+      <p>Stäng dagen på 30 sekunder med smart dagsavslut för kort, Swish och kontant.</p>
+      <span class="card-arrow">Jag driver salong →</span>
     </a>
+  </div>
+
+  <div class="value-proof">
+    <div class="value-item">📸 Fota kvitto → bokfört</div>
+    <div class="value-item">🧾 Faktura → skickad på 30 sek</div>
+    <div class="value-item">📊 Moms → alltid klar</div>
   </div>
 
   <p class="fallback">
