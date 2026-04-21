@@ -110,20 +110,77 @@
     .nav-hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
       gap: 5px;
       cursor: pointer;
-      padding: 4px;
+      padding: 8px;
       background: none;
       border: none;
+      margin-left: 4px;
     }
 
     .nav-hamburger span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
       background: var(--text);
       border-radius: 2px;
-      transition: all 0.2s;
+      transition: all 0.25s;
+      transform-origin: center;
+    }
+
+    /* Hamburger → X animation */
+    nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile dropdown menu */
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 8px 0 16px;
+    }
+
+    nav.open .nav-mobile-menu { display: flex; }
+
+    .nav-mobile-menu a {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:active { background: var(--sage); }
+
+    .nav-mobile-menu .mobile-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 24px;
+    }
+
+    .nav-mobile-menu .mobile-cta {
+      margin: 12px 24px 0;
+      background: var(--teal);
+      color: var(--white) !important;
+      border-radius: 50px;
+      text-align: center;
+      padding: 14px 24px !important;
+      border-bottom: none !important;
+      box-shadow: 0 4px 16px rgba(8,143,143,0.25);
+    }
+
+    .nav-mobile-menu .mobile-login {
+      color: var(--muted) !important;
+      font-size: 14px !important;
+      text-align: center;
+      padding-top: 8px !important;
+      border-bottom: none !important;
     }
 
     /* ── HERO ────────────────────────────────────────── */
@@ -867,34 +924,94 @@
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 900px) {
+      /* Nav */
       .nav-links { display: none; }
+      .nav-login { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 0 60px; }
+      /* Hero */
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 64px; }
+      .hero-text { max-width: 100%; }
       .hero-visual { justify-content: center; }
-      .hero-stat { left: 0; }
-      .pain-grid { grid-template-columns: 1fr; }
-      .features-split { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-wrap { max-width: 480px; }
+      .hero-stat { left: 0; right: auto; bottom: -16px; }
+      .hero-features { gap: 20px; }
+
+      /* Sections */
+      .problem { padding: 64px 0; }
+      .features { padding: 64px 0; }
+      .features-grid-section { padding: 56px 0; }
+      .how { padding: 64px 0; }
+      .pricing { padding: 64px 0; }
+      .cta-banner { padding: 64px 0; }
+
+      /* Content */
+      .pain-grid { grid-template-columns: 1fr; gap: 14px; }
+      .features-split { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
       .features-split.reverse { direction: ltr; }
       .features-grid { grid-template-columns: 1fr 1fr; }
-      .steps { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 16px; }
       .steps::before { display: none; }
       .price-card { padding: 40px 24px; }
+
+      /* VS strip */
+      .vs-inner { gap: 10px; }
     }
 
     @media (max-width: 600px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .container { padding: 0 20px; }
+      .container { padding: 0 18px; }
+
+      /* Hero */
+      .hero-inner { padding: 40px 0 56px; }
       .hero h1 { letter-spacing: -1px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .hero-desc { font-size: 16px; }
+      .hero-features { gap: 16px; }
+      .hero-stat {
+        position: static;
+        display: inline-flex;
+        margin-top: 20px;
+        box-shadow: 0 4px 20px rgba(8,60,60,0.10);
+      }
+
+      /* Nav */
+      .nav-cta { padding: 9px 16px; font-size: 13px; }
+
+      /* Sections */
+      .problem { padding: 52px 0; }
+      .features { padding: 52px 0; }
+      .features-split { gap: 28px; margin-bottom: 44px; }
+      .features-grid-section { padding: 44px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .how { padding: 52px 0; }
+      .pricing { padding: 52px 0; }
+      .cta-banner { padding: 52px 0; }
+
+      /* Typography */
+      .section-title { letter-spacing: -0.5px; }
+      .section-sub { font-size: 15px; }
+      .pain-card { padding: 24px 20px; }
+      .feature-card { padding: 24px 20px; }
+      .step { padding: 28px 20px 24px; }
+
+      /* Pricing */
+      .price-card { padding: 36px 20px; }
+      .price-amount { font-size: 44px; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
+      .footer-copy { text-align: left; }
+
+      /* VS strip */
+      .vs-chip { font-size: 12px; padding: 6px 12px; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="main-nav">
     <div class="container nav-inner">
       <a class="nav-logo" href="#">
         <img src="./assets/ekoassist-logotype-transparent.png" alt="EkoAssist">
@@ -909,12 +1026,38 @@
       <div class="nav-right">
         <a class="nav-login" href="https://app.ekoassist.se">Logga in</a>
         <a class="nav-cta" href="https://app.ekoassist.se">Testa gratis →</a>
-        <button class="nav-hamburger" aria-label="Meny" onclick="this.closest('nav').querySelector('.nav-links').style.display = this.closest('nav').querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+        <button class="nav-hamburger" id="hamburger-btn" aria-label="Öppna meny" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+    <!-- Mobile dropdown -->
+    <div class="nav-mobile-menu" id="mobile-menu">
+      <a href="#features" class="mobile-link">Funktioner</a>
+      <a href="#hur" class="mobile-link">Kom igång</a>
+      <a href="#pris" class="mobile-link">Pris</a>
+      <a href="/konsult" class="mobile-link">Konsult</a>
+      <a href="/frisor" class="mobile-link">Frisör</a>
+      <a href="https://app.ekoassist.se" class="mobile-login">Logga in</a>
+      <a href="https://app.ekoassist.se" class="mobile-cta">Testa gratis →</a>
+    </div>
   </nav>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    const btn = document.getElementById('hamburger-btn');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    // Close menu when a link is tapped
+    document.querySelectorAll('.mobile-link, .mobile-login, .mobile-cta').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 
   <!-- HERO -->
   <section class="hero">
